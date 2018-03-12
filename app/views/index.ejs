@@ -16,9 +16,20 @@
         <section>
             <h2>Cadastrar-se</h2>
             <div>
+                <% if(validacao.length > 0) { %>
+                    <div class="alert alert-danger">
+                        <strong>Opa! Favor entrar com:</strong>
+                        <ul>
+                            <% for (var i = 0; i < validacao.length; i++) { %>
+                                <li><%= validacao[i].msg %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+
+                <% } %>
                 <form class="form-inline form-cadastrar" action="/cadastrar" method="post">
 					<div class="form-group">
-						<input type="text" name="email" id="email" value="" placeholder="Seu melhor Email" class="form-control" autocomplete="off" />
+						<input type="text" name="email" id="email" value="<%= dados.email %>" placeholder="Seu melhor Email" class="form-control" autocomplete="off" />
 						<input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
 						<button type="submit" class="btn btn-success">Cadastrar</button>
 					</div>
