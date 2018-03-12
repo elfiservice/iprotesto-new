@@ -5,10 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iProtesto</title>
+    <!-- usar Bootstrap -->
+    <!-- usar jQuery -->
 </head>
 <body>
     <header>
         <h1>iProtesto</h1>
     </header>
+    <main>
+        <section>
+            <h2>Cadastrar-se</h2>
+            <div>
+                <form class="form-inline form-cadastrar" action="/cadastrar" method="post">
+					<div class="form-group">
+						<input type="text" name="email" id="email" value="" placeholder="Seu melhor Email" class="form-control" autocomplete="off" />
+						<input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
+						<button type="submit" class="btn btn-success">Cadastrar</button>
+					</div>
+				</form>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
