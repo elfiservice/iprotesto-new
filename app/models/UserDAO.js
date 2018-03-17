@@ -16,8 +16,8 @@ class UserDAO {
             db.collection('users').find({email: user.email}).toArray(function(err, result) {
                 
                 if(result.length >= 1) {
-                    //console.log('Ja existente');
-                    res.send('User already exist!');
+                    let msg = [{msg: 'Usuraio ja existente, tente outro!'}];
+                    res.render('index',{validacao: msg, dados: user})
                     
                 } else {
                     

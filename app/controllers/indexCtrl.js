@@ -4,11 +4,11 @@ module.exports.index = function(application, req, res) {
 
 module.exports.cadastrar = function(application, req, res) {
     const dados = req.body;
-
+    console.log(dados);
     //validate email and pass
-    req.assert('email', 'seu melhor Email').notEmpty();
-    req.assert('email', 'com um Email válido').isEmail();
-    req.assert('senha', 'uma senha segura').notEmpty();
+    req.assert('email', 'Deixe seu melhor Email').notEmpty();
+    req.assert('email', 'Entre com um Email válido').isEmail();
+    req.assert('senha', 'Entre com uma senha segura').notEmpty();
 
     const erros = req.validationErrors();
     if(erros) {
@@ -16,6 +16,8 @@ module.exports.cadastrar = function(application, req, res) {
         return;
     }
 
+    
+    
     //instace of model to insert user
     const connection = application.config.dbConnection;
     const UserDAO = new application.app.models.UserDAO(connection);
