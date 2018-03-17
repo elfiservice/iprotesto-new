@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,19 @@
     <title>iProtesto</title>
     <!-- usar Bootstrap -->
     <!-- usar jQuery -->
+        <!-- JQuery -->
+        <script src="js/jquery-2.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#btn_login').click(function () {
+                window.location.href = "/login";
+            });
+
+        });
+    </script>
 </head>
+
 <body>
     <header>
         <h1>iProtesto</h1>
@@ -21,21 +34,31 @@
                         <strong>Opa!</strong>
                         <ul>
                             <% for (var i = 0; i < validacao.length; i++) { %>
-                                <li><%= validacao[i].msg %></li>
-                            <% } %>
+                                <li>
+                                    <%= validacao[i].msg %>
+                                </li>
+                                <% } %>
                         </ul>
                     </div>
-
                 <% } %>
                 <form class="form-inline form-cadastrar" action="/cadastrar" method="post">
-					<div class="form-group">
-						<input type="text" name="email" id="email" value="<%= dados.email %>" placeholder="Seu melhor Email" class="form-control" autocomplete="off" />
-						<input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
-						<button type="submit" class="btn btn-success">Cadastrar</button>
-					</div>
-				</form>
+                    <div class="form-group">
+                        <input type="text" name="email" id="email" value="<%= dados.email %>" placeholder="Seu melhor Email" class="form-control"
+                            autocomplete="off" />
+                        <input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </div>
+                </form>
             </div>
         </section>
+        <seciton>
+            <h2>Login</h2>
+            <div>
+                <button id="btn_login" type="submit" class="btn btn-success">Login</button>
+            </div>
+        </seciton>
     </main>
+
 </body>
+
 </html>

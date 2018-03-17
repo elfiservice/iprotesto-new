@@ -27,3 +27,7 @@ module.exports.cadastrar = function(application, req, res) {
 
     //res.send(dados);
 }
+
+module.exports.login = function(application, req, res) {
+    res.render('login', {dados: {}});
+}

@@ -23,10 +23,12 @@ class UserDAO {
                     
                     db.collection('users').insertOne(user, (err, result) => {
                         if(err) {
+                            //render a error page saying There was a problem during inseting User
                             console.log(err);       
                         } else {
                             console.log(result.ops);
-                            res.send('ir para pagina de Login e confirmacao');      
+                            //res.render('login', {dados: user});
+                            res.redirect('/login');
                         }
                         client.close();  
                     });
