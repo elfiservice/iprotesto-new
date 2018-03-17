@@ -1,36 +1,24 @@
-// class UserDAO {
-//     constructor(connection) {
-//         this._connection = connection();
-//     }
+class UserDAO {
+    constructor(connection) {
+        this._connection = connection();
+        this._table = 'iprotesto';
 
-//     create(user) {
-//         this._connection.open( (err, mongoClient) => {
-//             mongoClient.collection("users", (err, collection) => {
-//                 collection.insert(user);
+    }
 
-//                 mongoClient.close();
-//             });
-//         });
-//     }
-// }
+    create(user) {
+        this._connection.connect((err, client) => {
+            const db = client.db(this._table);
+            db.collection('users').insertOne(user, (err, result) => {
+                if(err) {
+                    console.log(err);       
+                }else {
+                    console.log(result.ops);      
+                }
+            });
+          });
+    }
+}
 
-function UserDAO(connection) {
-    this._connection = connection();
-  }
-  
-  UserDAO.prototype.create = function(usuario) {
-    //funcai open fornecida pelo objeto mongo.Db
-    this._connection.open( (err, mongoClient) => {
-      //estabelecida a conexao, agora podemos manipular os docs dentro do bd
-      mongoClient.collection("users", (err, collection) => {
-  
-  
-        collection.insert(usuario);
-  
-        mongoClient.close();
-      });
-    });
-  }
 
 
 module.exports = () => {

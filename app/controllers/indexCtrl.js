@@ -18,7 +18,6 @@ module.exports.cadastrar = function(application, req, res) {
 
     //instace of model to insert user
     const connection = application.config.dbConnection;
-    
     const UserDAO = new application.app.models.UserDAO(connection);
 
     UserDAO.create(dados);
