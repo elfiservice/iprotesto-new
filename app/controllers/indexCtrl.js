@@ -20,7 +20,8 @@ module.exports.cadastrar = function(application, req, res) {
     const connection = application.config.dbConnection;
     const UserDAO = new application.app.models.UserDAO(connection);
 
-    UserDAO.create(dados);
+  
+    UserDAO.create(dados, req, res);
 
-    res.send(dados);
+    //res.send(dados);
 }
