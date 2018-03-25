@@ -10,14 +10,29 @@
     <header>
         <h1>iProtesto - Login</h1>
     </header>
-    <form class="form-inline form-cadastrar" action="/entry" method="post">
-        <div class="form-group">
-            <input type="text" name="email" id="email" value="<%= dados.email %>" placeholder="Seu melhor Email" class="form-control"
-                autocomplete="off" />
-            <input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
-            <button type="submit" class="btn btn-success">Enter</button>
-        </div>
-    </form>
+    <div>
+        <% if(validacao.length > 0) { %>
+            <div class="alert alert-danger">
+                <strong>Opa!</strong>
+                <ul>
+                    <% for (var i = 0; i < validacao.length; i++) { %>
+                        <li>
+                            <%= validacao[i].msg %>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+        <% } %>
+        <form class="form-inline form-cadastrar" action="/entry" method="post">
+            <div class="form-group">
+                <input type="text" name="email" id="email" value="<%= dados.email %>" placeholder="Seu melhor Email" class="form-control"
+                    autocomplete="off" />
+                <input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
+                <button type="submit" class="btn btn-success">Enter</button>
+            </div>
+        </form>
+    </div>
+
 
 </body>
 </html>

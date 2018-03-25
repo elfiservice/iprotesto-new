@@ -6,8 +6,7 @@ module.exports.cadastrar = function(application, req, res) {
     const dados = req.body;
     console.log(dados);
     //validate email and pass
-    req.assert('email', 'Deixe seu melhor Email').notEmpty();
-    req.assert('email', 'Entre com um Email válido').isEmail();
+    req.assert('email', 'Deixe seu melhor Email').isEmail();
     req.assert('senha', 'Entre com uma senha segura').notEmpty();
 
     const erros = req.validationErrors();
@@ -29,5 +28,5 @@ module.exports.cadastrar = function(application, req, res) {
 }
 
 module.exports.login = function(application, req, res) {
-    res.render('login', {dados: {}});
+    res.render('login', {dados: {}, validacao: {}});
 }
