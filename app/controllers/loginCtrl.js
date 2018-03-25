@@ -11,7 +11,11 @@ module.exports.entry = function(application, req, res) {
       res.render("login", {validacao: erros, dados: dados});
       return;
     }
-    res.send(dados);
-    //verifica se nao esta em branco e email valido
+
     //verifica dados no BD e redireciona para pag Home se existir
+    const connection = application.config.dbConnection;
+    const UserDAO = new application.app.models.UserDAO(connection);
+
+    UserDAO.logInto(dados, req, res);
+
 }

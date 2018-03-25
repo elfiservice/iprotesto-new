@@ -36,9 +36,32 @@ class UserDAO {
 
                 client.close();
             });
+        });
+        
+    }
 
-            
+    logInto(user, req, res) {
+        this._connection.connect((err, client) => {
+            const db = client.db(this._dbName);
+            db.collection('users').find(user).toArray(function(err, result) {
+                let userData = result[0];
+                if(userData != undefined) {
+                    req.session.autorizado = true;
+                    req.session.emailUser = userData.email;
+                                        
+                }
 
+                if(req.session.autorizado){
+                    res.redirect("home");
+                  } else {
+                    let msg = [{msg: 'Usuraio não encontrado, tente outro!'}];  
+                    res.render("login", {validacao: msg, dados: user.email});
+                  }
+                
+                
+
+                client.close();
+            });
         });
         
     }
