@@ -48,6 +48,7 @@ class UserDAO {
                 if(userData != undefined) {
                     req.session.autorizado = true;
                     req.session.emailUser = userData.email;
+                    req.session.idUser = userData._id;
                                         
                 }
 
@@ -57,9 +58,7 @@ class UserDAO {
                     let msg = [{msg: 'Usuraio não encontrado, tente outro!'}];  
                     res.render("login", {validacao: msg, dados: user.email});
                   }
-                
-                
-
+            
                 client.close();
             });
         });
