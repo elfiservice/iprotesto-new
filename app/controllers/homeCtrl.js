@@ -8,3 +8,9 @@ module.exports.home = function(application, req, res) {
 
     res.render('home', {user: {email : req.session.emailUser}});
 }
+
+module.exports.logout = function(application, req, res) {
+    req.session.destroy(function(err) {
+        res.render('index', {validacao: {}, dados: {}});
+      });    
+}

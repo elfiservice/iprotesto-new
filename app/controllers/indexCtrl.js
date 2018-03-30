@@ -1,4 +1,8 @@
 module.exports.index = function(application, req, res) {
+    if(req.session.autorizado == true) {
+        res.render('home', {user: {email : req.session.emailUser}});
+        return;
+    }
     res.render('index', {validacao: {}, dados: {}});
 }
 
