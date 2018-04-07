@@ -17,6 +17,16 @@
     <main>
         <h2>Your Protest Here</h2>
         <p>Hi <%= user.email %></p>
+        <div>
+            <form action="/save" method="post">
+                <textarea name="protest" id="protest-text" cols="30" rows="10" required></textarea>
+                <select name="states" id="protest-state" required>
+                    <option value="">--</option>
+                    <option value="ceara">Ceara</option>
+                </select>
+                <button type="submit">Protest</button>
+            </form>
+        </div>
     </main>
     
 </body>
