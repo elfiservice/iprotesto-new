@@ -3,4 +3,7 @@ module.exports = function(application){
 		application.app.controllers.profileCtrl.profile(application, req, res);
 	});
 
+	application.get('/states', function(req, res){
+		application.app.controllers.profileCtrl.states(application, req, res);
+	});
 }

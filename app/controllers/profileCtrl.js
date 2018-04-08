@@ -8,3 +8,12 @@ module.exports.profile = function(application, req, res) {
 
     res.render('profile', {user: {email : req.session.emailUser}});
 }
+
+module.exports.states = function(application, req, res) {
+
+    var connection = application.config.dbConnection;
+    var ProfileDAO = new application.app.models.ProfileDAO(connection);
+
+    ProfileDAO.getStates(req, res);
+
+}
